@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Web_Prototype_00</title>
+	<link rel="stylesheet" type="text/css" href="normalize.css">
+	<meta charset="utf-8">
+	<style>
+
+		.container { overflow: hidden; position:relative; width:100%; }
+		#main { height: 900px; }
+		.button { position: absolute; background: black; color: white;
+			border-radius: 5%; text-align: center; line-height: 120px;}
+		.button:hover { background: orange; }
+
+		#button { 
+			margin-left: 8%; 
+			top: 500px; width: 240px; height: 120px; }
+		#button2{
+			margin-left: calc(270px + 8%); 
+			top: 500px; width: 240px; height: 120px; }
+		
+		#button:hover { background: orange; }
+
+		#diary { position: fixed; width: 100%; z-index: -2; transition:1s;}
+		#abstract { position: fixed; width: 100%;
+			opacity: 0; transition: 1.2s; z-index: -1;}
+		#pptype {
+			color: white;
+			position: absolute;
+			width: 560px;
+			padding-top: 120px;
+			padding-left: 8%;
+			top:0px; left:0px; z-index: 9;
+		}
+		.pfont { margin:0; font-size: 1.8em; font-weight: bold; line-height: 1.5em; word-spacing: 0.5px;
+			letter-spacing: -1.5px; }
+		.ptype { margin:0; font-size: 4em; }
+		.centertext { padding-top: 120px; text-align: center; }
+		#centertext {
+			font-size: 2em;
+			text-shadow: 0 0 5px #FFFFFF;
+			color: rgb(0,20,30);
+			height: 420px; position: relative; width:100%; z-index:9;
+			}
+		#centertext p::after { content: "똑똑한 AI입니다"; font-size:2em;
+			}
+
+		#videotext { height: 900px; z-index : -2; transition: 1s; opacity:0;
+
+		}
+		#videobox { z-index:-2; margin: auto; opacity:1; width:840px; height:480px; background: black; }
+		#videoboxx { z-index:-2; margin: auto; opacity:1; width:820px; height:450px; background: rgb(60,0,100);}
+		#today { padding: 20px; color: rgb(150,0,0);}
+
+		#videopp { width: 100%; margin: 0; position: absolute; top: 1800px; 
+			height: 400px; z-index: 3; transition: 2s; opacity:0;
+			font-size: 1.8em;
+		}
+		#videopp p { text-shadow: 0 0 10px #FFFFFF;
+			color: rgb(0,20,30); padding-top: 320px; text-align: center;
+		}
+
+		#theater { width:100%; position: fixed; bottom: calc(-50px - 100%); z-index: 5;
+			transition: 1s;}
+		#theater:hover { cursor: pointer; }
+		#theaterpng { width:100%; }
+
+		#blank { height:1200px; }
+
+		#monitor {
+			z-index: 10;
+			background: red; 
+			color: white;
+			text-align: center; line-height: 50px;
+			width: 100px; height:50px; position:fixed; top: 0px; right:0px;}
+
+	</style>
+	
+</head>
+<body>
+	<audio id="Algorithm" src="Algorithm.mp3"></audio>
+	
+	<div id="wrap" class="container">
+	<div id="main" class="container">
+			<img id="diary" src = "diary1.jpg">
+			<img id="abstract" src = "ai.jpg">
+			<div id = "pptype">
+				<p class="pfont">나의 오늘을 그려주는 예술가</p>
+				<h1 class="ptype">Present Painter();<br></h1>
+		</div>
+		<div id = "button" class="pfont button">
+			Google Play
+		</div>
+		<div id = "button2" class="pfont button">
+			App Store
+		</div>
+	</div>
+
+	<div id="centertext">
+		<p class="pfont centertext">PP는 내가 쓴 일기를<br>그림으로 그려주고, 음악으로 들려주는<br><br></p>
+	</div>
+
+	<div id="videotext">
+		<div id="videobox">
+			<div id="videoboxx">
+				<p id="today" class = "pfont">
+					2018년 11월 14일.<br><br>
+					뮤즈의 8집 Simulation Theory가 5일 전에 발매되었다. 나는 누구보다 빨리 Yes24에 들어가서 앨범을 구매했고, 오늘에서야 배송받은 앨범을 들어볼 수 있는 기회가 생겼다. 끝까지 노래를 다 들어본 나는 생각했다. 이 앨범의 노래들은 정말 더 이상 이 세상 음악이 아니다. 누군가가 말했다. 가장 미래적인 모던락 앨범이라고. 그가 말한 미래가 언제쯤 당도할지 범속의 사람인 나로서는 도저히 그 시기를 가늠할 수 조차 없다. 
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<div id="videopp">
+		<p class="pfont">PP가 그려주는 그림,<br>PP가 들려주는 음악을 통해,<br>
+			오늘 하루를 새롭게 돌아보는 시간을 가져보세요
+		</p>
+	</div>
+	<div id="theater">
+		<img id="theaterpng" src="theater.png">
+	</div>
+	<div id="blank" class="container">
+	</div>
+	</div>
+
+	<script type="text/javascript">
+
+		window.onscroll = function(){
+
+			var t = document.documentElement.scrollTop
+			//monitor.innerHTML = t + "px";
+
+			if(t < 480){
+				abstract.style.opacity = 0;
+				diary.style.opacity = 1;
+
+			}else if(t < 1160){
+
+				abstract.style.opacity = 1;
+				diary.style.opacity = 0;
+
+				videobox.style.position = "relative";
+				videobox.style.top = 0 + "px";
+				videobox.style.left = 0 + "px";
+
+				videotext.style.opacity = 0;
+
+				videoboxx.style.position = "relative";
+				videoboxx.style.top = 0 + "px";
+				videoboxx.style.left = 0 + "px";
+
+				abstract.style.position = "fixed";
+				abstract.style.top = 0 + "px";
+				abstract.style.left = 0 + "px";
+				abstract.style.width = "100%" ;
+				abstract.style.height = "auto" ;
+				abstract.style.zIndex = "1";
+
+				videopp.style.opacity = 0;
+
+			
+			}else if(t < 1800){
+				
+
+				videobox.style.position = "fixed";
+				videobox.style.top = 80 + "px";
+				videobox.style.left = "calc(50% - 420px)";
+
+				videotext.style.opacity = 1;
+				videotext.style.transition = "1s";
+
+				videoboxx.style.position = "fixed";
+				videoboxx.style.top = 90 + "px";
+				videoboxx.style.left = "calc(50% - 410px)";
+
+				abstract.setAttribute("src", "ai.jpg")
+				abstract.style.opacity = 1;
+				abstract.style.position = "fixed";
+				abstract.style.width = 820 + "px";
+				abstract.style.height = "auto";
+				abstract.style.top = 90 + "px";
+				abstract.style.left = "calc(50% - 410px)";
+				abstract.style.zIndex = "2";
+
+				videopp.style.opacity = 1;
+
+				
+
+			}else if(t < 2300){			
+				abstract.style.opacity = 0;
+
+
+
+				theater.style.bottom = "calc(-50px - 100%)";
+				theater.style.zIndex = "5"
+
+			}else if(t < 5000){
+
+				document.body.style.transition = "0s";
+				document.body.style.background = "white";
+
+				Algorithm.pause();
+
+				abstract.setAttribute("src", "abstract2.jpg")
+				abstract.style.opacity = 0.2;
+
+				theater.style.bottom = -50 + "px";
+				theater.style.zIndex = "5"
+
+				abstract.style.width = 820 + "px";
+				abstract.style.height = "auto";
+				abstract.style.top = 90 + "px";
+				abstract.style.left = "calc(50% - 410px)";
+			}
+		}
+
+
+		theater.onclick = function(){
+
+			var t = document.documentElement.scrollTop
+
+			if(t > 2300){
+				Algorithm.play();
+
+				document.body.style.transition = "1s";
+				document.body.style.background = "black";
+
+				abstract.style.opacity = 1;
+				abstract.style.width = "calc(100% - 20px)";
+				abstract.style.height = "auto";
+				abstract.style.top = 10 + "px";
+				abstract.style.left = 10 + "px";
+
+				theater.style.bottom = "calc(-50px - 100%)";
+
+			}
+		}
+
+		abstract.onclick = function(){
+				Algorithm.pause();
+
+				document.body.style.background = "white";
+
+				abstract.style.width = 820 + "px";
+				abstract.style.height = "auto";
+				abstract.style.top = 90 + "px";
+				abstract.style.left = "calc(50% - 410px)";
+
+			}
+
+			
+	</script>
+</body>
+</html>
