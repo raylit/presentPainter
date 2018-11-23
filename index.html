@@ -3,43 +3,50 @@
 <head>
 	<title>Web_Prototype_00</title>
 	<link rel="stylesheet" type="text/css" href="normalize.css">
+	<link href="https://fonts.googleapis.com/css?family=Amiri|East+Sea+Dokdo|Song+Myung" rel="stylesheet">
 	<meta charset="utf-8">
 	<style>
 
 		.container { overflow: hidden; position:relative; width:100%; }
 		#main { height: 900px; }
-		.button { position: absolute; background: black; color: white;
-			border-radius: 5%; text-align: center; line-height: 120px;}
-		.button:hover { background: orange; }
+		.button { display: block; cursor: pointer; 
+			position: absolute; background: black; color: white;
+			border-radius: 5%; text-align: center; line-height: 90px;}
+		.button:hover { background: #cfe032; color: #ad499a; }
 
 		#button { 
-			margin-left: 8%; 
-			top: 500px; width: 240px; height: 120px; }
+			margin-left: 11%; 
+			top: 480px; width: 180px; height: 90px; }
 		#button2{
-			margin-left: calc(270px + 8%); 
-			top: 500px; width: 240px; height: 120px; }
+			margin-left: calc(210px + 11%); 
+			top: 480px; width: 180px; height: 90px; }
 		
-		#button:hover { background: orange; }
+		
 
 		#diary { position: fixed; width: 100%; z-index: -2; transition:1s;}
 		#abstract { position: fixed; width: 100%;
 			opacity: 0; transition: 1.2s; z-index: -1;}
 		#pptype {
-			color: white;
+			color: #ad499a;
 			position: absolute;
 			width: 560px;
-			padding-top: 120px;
-			padding-left: 8%;
+			padding-top: 60px;
+			padding-left: 9%;
 			top:0px; left:0px; z-index: 9;
+
 		}
-		.pfont { margin:0; font-size: 1.8em; font-weight: bold; line-height: 1.5em; word-spacing: 0.5px;
-			letter-spacing: -1.5px; }
-		.ptype { margin:0; font-size: 4em; }
+		#pptype p{ padding-left: 15px; font-size: 1.2em; line-height: 1.5em;  }
+		#pptype p2{ padding-left:45px;  }
+		#pptype h1 { padding-top:15px; padding-left:45px; }
+		#pptype h1::after { content: "PP"; font-size: 2em; color:#4c4096; }
+		.pfont { margin:0; font-size: 1.8em; word-spacing: 0.5px; font-family: 'Song Myung', serif; }
+		.ptype { margin:0; font-size: 4em; font-family: 'Amiri', serif; }
 		.centertext { padding-top: 120px; text-align: center; }
 		#centertext {
 			font-size: 2em;
-			text-shadow: 0 0 5px #FFFFFF;
-			color: rgb(0,20,30);
+			line-height: 2.7em;
+			text-shadow: 0 0 5px #000000;
+			color: white;
 			height: 420px; position: relative; width:100%; z-index:9;
 			}
 		#centertext p::after { content: "똑똑한 AI입니다"; font-size:2em;
@@ -49,14 +56,18 @@
 
 		}
 		#videobox { z-index:-2; margin: auto; opacity:1; width:840px; height:480px; background: black; }
-		#videoboxx { z-index:-2; margin: auto; opacity:1; width:820px; height:450px; background: rgb(60,0,100);}
-		#today { padding: 20px; color: rgb(150,0,0);}
+		#videoboxx { z-index:-2; margin: auto; opacity:1; width:820px; height:450px; background-image: linear-gradient(#d65677, #4c4096);}
+		#today { opacity: 0; 
+			width:640px; margin:auto; height:408px; padding: 20px;
+			background: white; color: rgb(50,50,50);
+			text-decoration: underline; text-decoration-color: red;
+			font-family: 'East Sea Dokdo', cursive; font-weight: normal;}
 
 		#videopp { width: 100%; margin: 0; position: absolute; top: 1800px; 
 			height: 400px; z-index: 3; transition: 2s; opacity:0;
 			font-size: 1.8em;
 		}
-		#videopp p { text-shadow: 0 0 10px #FFFFFF;
+		#videopp p { text-shadow: 0 0 10px #FFFFFF; line-height: 1.5em;
 			color: rgb(0,20,30); padding-top: 320px; text-align: center;
 		}
 
@@ -65,7 +76,17 @@
 		#theater:hover { cursor: pointer; }
 		#theaterpng { width:100%; }
 
-		#blank { height:1200px; }
+		#blank { height:1200px; opacity:0; transition: 1s; }
+		#goods { width:100%; position: absolute; bottom:0px;  }
+		#goodstype { position: absolute; text-align: center; width:100%;
+			bottom: 120px; line-height: 1.8em; }
+
+		#startbar { cursor: pointer; transition: 1s; transition-delay: 1s;
+			position: fixed; width: 100%; height: 100px;
+			bottom: -100px; background-image: linear-gradient(#d65677, #4c4096);
+		}
+		#start { 
+			line-height: 100px; color: white; text-align: center;}
 
 		#monitor {
 			z-index: 10;
@@ -80,20 +101,28 @@
 <body>
 	<audio id="Algorithm" src="Algorithm.mp3"></audio>
 	
+	</div>
 	<div id="wrap" class="container">
 	<div id="main" class="container">
-			<img id="diary" src = "diary1.jpg">
-			<img id="abstract" src = "ai.jpg">
+			<img id="diary" src = "diary1.png">
+			<img id="abstract" src = "ppp.png">
 			<div id = "pptype">
-				<p class="pfont">나의 오늘을 그려주는 예술가</p>
-				<h1 class="ptype">Present Painter();<br></h1>
+				<p class="pfont">당신의 하루를 그려주는
+				<br></p>
+				<p2 class="pfont">
+				내 방의 작은 예술가</p2>
+				<h1 class="ptype">
+					Present your Present<br>
+					</h1>
 		</div>
+		<a href="https://raylit.github.io/Fuucckkinggithub/" target = blank>
 		<div id = "button" class="pfont button">
 			Google Play
 		</div>
 		<div id = "button2" class="pfont button">
 			App Store
 		</div>
+		</a>
 	</div>
 
 	<div id="centertext">
@@ -120,7 +149,19 @@
 		<img id="theaterpng" src="theater.png">
 	</div>
 	<div id="blank" class="container">
+		<img src="ppp3.png" id="goods">
+		<p id = "goodstype" class="pfont">
+			PP가 그려준 그림으로 <br> 나만의 굿즈를 제작할 수도 있습니다.
+		</p>
 	</div>
+	<a href = "https://raylit.github.io/Fuucckkinggithub/" target = blank>
+	<div id="startbar">
+		
+		<p id="start" class="pfont">
+			PP 시작하기
+		</p>
+	</div>
+	</a>
 	</div>
 
 	<script type="text/javascript">
@@ -132,6 +173,7 @@
 
 			if(t < 480){
 				abstract.style.opacity = 0;
+				abstract.style.zIndex = -2;
 				diary.style.opacity = 1;
 
 			}else if(t < 1160){
@@ -161,6 +203,7 @@
 			
 			}else if(t < 1800){
 				
+				diary.style.opacity = 0;
 
 				videobox.style.position = "fixed";
 				videobox.style.top = 80 + "px";
@@ -173,7 +216,7 @@
 				videoboxx.style.top = 90 + "px";
 				videoboxx.style.left = "calc(50% - 410px)";
 
-				abstract.setAttribute("src", "ai.jpg")
+				abstract.setAttribute("src", "ppp.png")
 				abstract.style.opacity = 1;
 				abstract.style.position = "fixed";
 				abstract.style.width = 820 + "px";
@@ -183,26 +226,35 @@
 				abstract.style.zIndex = "2";
 
 				videopp.style.opacity = 1;
-
+				
 				
 
 			}else if(t < 2300){			
+
+				diary.style.opacity = 0;
+				
 				abstract.style.opacity = 0;
 
-
+				today.style.opacity = 0;
+				today.style.transition = "0s";
 
 				theater.style.bottom = "calc(-50px - 100%)";
 				theater.style.zIndex = "5"
 
 			}else if(t < 5000){
 
+				diary.style.opacity = 0;
+
+				today.style.opacity = 1;
+				today.style.transition = "1s";
+
 				document.body.style.transition = "0s";
 				document.body.style.background = "white";
 
 				Algorithm.pause();
 
-				abstract.setAttribute("src", "abstract2.jpg")
-				abstract.style.opacity = 0.2;
+				abstract.setAttribute("src", "ppp2.png")
+				abstract.style.opacity = 1;
 
 				theater.style.bottom = -50 + "px";
 				theater.style.zIndex = "5"
@@ -211,6 +263,14 @@
 				abstract.style.height = "auto";
 				abstract.style.top = 90 + "px";
 				abstract.style.left = "calc(50% - 410px)";
+
+				blank.style.opacity = 0;
+
+				videobox.style.opacity = 1;
+
+				startbar.style.bottom = -100 + "px";
+				startbar.style.transitionDelay = "0s";
+
 			}
 		}
 
@@ -220,18 +280,26 @@
 			var t = document.documentElement.scrollTop
 
 			if(t > 2300){
+
+				diary.style.opacity = 0;
+
 				Algorithm.play();
 
 				document.body.style.transition = "1s";
 				document.body.style.background = "black";
 
+				abstract.setAttribute("src", "abstract2.jpg");
 				abstract.style.opacity = 1;
 				abstract.style.width = "calc(100% - 20px)";
 				abstract.style.height = "auto";
 				abstract.style.top = 10 + "px";
 				abstract.style.left = 10 + "px";
+				abstract.style.zIndex = 2;
 
-				theater.style.bottom = "calc(-50px - 100%)";
+				theater.style.bottom = -1000 + "px";
+
+				startbar.style.bottom = -100 + "px";
+				startbar.style.transitionDelay = "0s";
 
 			}
 		}
@@ -241,10 +309,25 @@
 
 				document.body.style.background = "white";
 
-				abstract.style.width = 820 + "px";
+				videobox.style.opacity = 0;
+
+				abstract.setAttribute("src", "abstract2.jpg");
+
+				abstract.style.width = 180 + "px";
 				abstract.style.height = "auto";
-				abstract.style.top = 90 + "px";
-				abstract.style.left = "calc(50% - 410px)";
+				abstract.style.top = 300 + "px";
+				abstract.style.left = "calc(50% - 82px)";
+				abstract.style.zIndex = -1;
+
+				blank.style.opacity = 1;
+				blank.style.zIndex = -2;
+
+				goods.style.position = "fixed";
+				goods.style.top = 0 + "px";
+				goods.style.left = 0 + "px";
+
+				startbar.style.bottom = 0 + "px";
+				startbar.style.transitionDelay = "1s";
 
 			}
 
